@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   <script src="assets/js/app.js"></script>
+</head>
+<body>
+    <h1>Web Audio Oscillator</h1>
+    <div>
+        <label>Frequency (Hz): <input type="range" id="frequency" min="20" max="2000" value="440" style="width:200px"></label>
+        <span id="freqDisplay">440</span> Hz
+    </div>
+    <div>
+        <label>Wave Type: 
+            <select id="waveType">
+                <option value="sine">Sine</option>
+                <option value="square">Square</option>
+                <option value="sawtooth">Sawtooth</option>
+                <option value="triangle">Triangle</option>
+            </select>
+        </label>
+    </div>
+    <div>
+        <button id="playBtn">Play</button>
+        <button id="stopBtn">Stop</button>
+    </div>
+</body>
+</html>
