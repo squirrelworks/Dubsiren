@@ -7,6 +7,9 @@ body {
   font-family: Arial, sans-serif;
   text-align: center;
   padding: 20px;
+
+    touch-action: manipulation;
+    background-color: rgb(43, 40, 39);
 }
 
 button {
