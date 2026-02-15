@@ -10,6 +10,7 @@ body {
 
     touch-action: manipulation;
     background-color: rgb(43, 40, 39);
+    color: whitesmoke;
 }
 
 button {
