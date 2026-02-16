@@ -63,7 +63,7 @@ button {
   display: flex;
   flex-direction: column;
   color: white;
-  background-color: rgb(34, 59, 4);
+  background-color: rgb(54, 66, 41);
   border-radius: 10px;
   padding: 10px;
   margin: 10px;
@@ -80,7 +80,7 @@ button {
    background-color: rgb(190, 2, 2);
    width: 10%;
    border-radius: 10%;
-   padding: 0px 0px;
+   
   margin: 8px;
 }
 
@@ -102,8 +102,8 @@ button {
  
    width: 10%;
    border-radius: 10%;
-  font-size: 16px;
-   padding: 0px 0px;
+  
+   
   margin: 8px;
 }
 

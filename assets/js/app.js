@@ -83,9 +83,9 @@ function selectModulatorType(type) {
 
   modButtons.forEach(button => {
  if (button.dataset.type === type) {
-   button.classList.add('waveButtonSelected');
+   button.classList.add('modButtonSelected');
  } else {
-   button.classList.remove('waveButtonSelected');
+   button.classList.remove('modButtonSelected');
  }
 });
 
