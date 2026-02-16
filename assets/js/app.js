@@ -1,8 +1,4 @@
-let audioContext;
-let oscillator;
-let gainNode;
 let isPlaying = false;
-let mod;
 
 let carrier ;
 let modulator;
@@ -11,7 +7,6 @@ let audioCtx;
 
 
 const playBtn = document.getElementById('playBtn');
-const stopBtn = document.getElementById('stopBtn');
 const frequencySlider = document.getElementById('frequency');
 const freqDisplay = document.getElementById('freqDisplay');
 
@@ -26,11 +21,24 @@ const waveTypeSelect = document.getElementById('waveType');
  const fadeDuration = 0.01; // seconds
 
 
-playBtn.addEventListener('mousedown', startFullSiren);
-playBtn.addEventListener('mouseup', stopFullSiren);
 
-playBtn.addEventListener('touchstart', startFullSiren);
-playBtn.addEventListener('touchend', stopFullSiren);
+ function isTouchPointer() {
+ return matchMedia("(pointer: coarse)").matches;
+}
+
+
+
+if (isTouchPointer()) {
+  playBtn.addEventListener('touchstart', startFullSiren);
+  playBtn.addEventListener('touchend', stopFullSiren);
+} else {
+  playBtn.addEventListener('mousedown', startFullSiren);
+  playBtn.addEventListener('mouseup', stopFullSiren);
+}
+
+
+
+
 
 window.addEventListener('keydown', (e) => {
   if (e.code === 'Space') {
@@ -84,6 +92,7 @@ waveTypeSelect.addEventListener('change', (e) => {
 
 function startFullSiren() {
   if (isPlaying) return;
+
    audioCtx = new AudioContext();
 
 // 2. Create Oscillator Nodes
@@ -112,16 +121,11 @@ carrier.start();
 
 function stopFullSiren() {
 
-
-
   const now = audioCtx.currentTime;
-
 // Ramp gain down to 0 over the duration
 modGain.gain.setValueAtTime(modGain.gain.value, now);
 modGain.gain.linearRampToValueAtTime(0, now + fadeDuration); 
  
-
-
   modulator.stop(now + fadeDuration);
 carrier.stop(now + fadeDuration);
   isPlaying = false;
