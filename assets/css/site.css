@@ -1,56 +1,217 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Caveat+Brush&display=swap');
+
+
 *:not(input):not(textarea) {
-  -webkit-user-select: none; /* disable selection/Copy of UIWebView */
-  -webkit-touch-callout: none; /* disable the IOS popup when long-press on a link */
-}  
+  -webkit-user-select: none;
+  /* disable selection/Copy of UIWebView */
+  -webkit-touch-callout: none;
+  /* disable the IOS popup when long-press on a link */
+}
 
 body {
-  font-family: Arial, sans-serif;
+   font-family: "Caveat Brush", cursive;
+  font-weight: 400;
+  font-style: normal;
+
   padding: 0px;
   margin: 0px;
+  background-color: rgb(31, 37, 7);
+  color: whitesmoke;
 
-    touch-action: manipulation;
-    user-select: none;
-    background-color: rgb(43, 40, 39);
-    color: whitesmoke;
+     /* Disable text selection and touch zoom interactions */
+  touch-action: manipulation;
+  user-select: none;
+ display: grid;
+height: 100vh;
+  grid-template-rows: auto 1fr auto;
+
+
 }
+
+h1 {
+  font-size: 4rem;
+}
+h2 {
+  font-size: 2em;  
+  padding: 0px;
+  margin: 0px;
+}
+
+header{
+ background-image: linear-gradient(90deg, #ff0000 0%, #ff0000 33%, #ffbb00 33%, #ffbb00 66%, #2e7300 66%, #2e7300 100%);
+
+}
+
 
 button {
-  font-size: 18px;
-  padding: 10px 20px;
-  margin: 20px;
- background-color: rgb(190, 2, 2);
+     font-family: "Caveat Brush", cursive;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 4em;
+ 
+  
+  background-color: rgb(190, 2, 2);
   border: none;
-  border-radius: 5px;
+ 
   color: white;
- height: 4rem;
-  width: 90%;
+  height: 100%;
+ 
+}
 
+.controls {
+  display: flex;
+  flex-direction: column;
+  color: white;
+  background-color: rgb(34, 59, 4);
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px;
+}
+
+#waveButtons {
+  display: flex;
+  align-items: center;
+ 
 
 }
 
-input[type="range"] {
-  width: 80%;
-  margin-bottom: 2rem;
-  margin-top: 2rem;
+ .waveButton {
+   background-color: rgb(190, 2, 2);
+   width: 10%;
+   border-radius: 10%;
+   padding: 0px 0px;
+  margin: 8px;
+}
+
+.waveButtonSelected{
+  background-color: rgb(255, 255, 255);
+  border: 2px solid white;
+}
+
+
+#modButtons {
+  display: flex;
+  align-items: center;
+ 
 
 }
+
+ .modButton {
+   background-color: rgb(190, 2, 2);
+ 
+   width: 10%;
+   border-radius: 10%;
+  font-size: 16px;
+   padding: 0px 0px;
+  margin: 8px;
+}
+
+.modButtonSelected{
+  background-color: rgb(255, 255, 255);
+  border: 2px solid white;
+}
+
+
+
+
+
+
+input[type=range] {
+  -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
+  width: 100%; /* Specific width is required for Firefox. */
+  background: transparent; /* Otherwise white in Chrome */
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+}
+
+input[type=range]:focus {
+  outline: none; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
+}
+
+/* slider button Special styling for WebKit/Blink */
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  border: 1px solid white;
+  background: #ffae00;
+ 
+
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 18px;
+  background: #6d4701;
+  border-radius: 8px;
+  border: 1px solid #010101;
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: #6d4701;
+}
+
+
+
+
 
 header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+
 }
+
+main{
+   padding: 1rem;
+   display: flex;
+   flex-direction: column;
+}
+
 
 footer {
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
+ 
+  display: flex;
+  justify-content: center;
 
-    height: 200px;
-    bottom: 0px;
-  margin-top: 30px;
+height: 200px;
+ background-color: rgb(190, 2, 2);
+
 }
+
+
+@media (min-width: 468px) {
+  
+  h1 {
+    font-size: 2rem;
+  }
+
+  main {
+    flex-direction: row;
+    gap: 2rem;
+  }
+
+  .controls {
+    flex: 1;
+  }
+
+  .waveButton {
+    width: 20%;
+  }
+
+  .modButton {
+    width: 20%;
+  }
+
+  button {
+    font-size: 4em;
+  }
+
+}
+

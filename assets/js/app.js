@@ -4,6 +4,8 @@ let carrier ;
 let modulator;
 let modGain;
 let audioCtx;
+let carrierType = 'sine';
+let modulatorType = 'sine';
 
 
 const playBtn = document.getElementById('playBtn');
@@ -18,6 +20,10 @@ const modDepthDisplay = document.getElementById('modDepthDisplay');
 
 const waveTypeSelect = document.getElementById('waveType');
 
+
+
+
+
  const fadeDuration = 0.01; // seconds
 
 
@@ -26,6 +32,66 @@ const waveTypeSelect = document.getElementById('waveType');
  return matchMedia("(pointer: coarse)").matches;
 }
 
+
+
+// Wave type selection handler
+
+let waveButtons = document.querySelectorAll('.waveButton');
+waveButtons.forEach(button => {
+  button.addEventListener('click', (e) => {
+    selectWaveType(e.target.dataset.type);
+  });
+});
+
+function selectWaveType(type) {
+ 
+ carrierType = type;
+
+  if (isPlaying && carrier) {
+    carrier.type = carrierType;
+  }
+
+  waveButtons.forEach(button => {
+ if (button.dataset.type === type) {
+   button.classList.add('waveButtonSelected');
+ } else {
+   button.classList.remove('waveButtonSelected');
+ }
+});
+
+}
+
+ selectWaveType(carrierType) // Set initial active button
+
+
+// Modulator type selection handler
+
+let modButtons = document.querySelectorAll('.modButton');
+modButtons.forEach(button => {
+  button.addEventListener('click', (e) => {
+    selectModulatorType(e.target.dataset.type);
+  });
+});
+
+function selectModulatorType(type) {
+ 
+ modulatorType = type;
+
+  if (isPlaying && modulator) {
+    modulator.type = modulatorType;
+  }
+
+  modButtons.forEach(button => {
+ if (button.dataset.type === type) {
+   button.classList.add('waveButtonSelected');
+ } else {
+   button.classList.remove('waveButtonSelected');
+ }
+});
+
+}
+
+ selectModulatorType(modulatorType) // Set initial active button
 
 
 if (isTouchPointer()) {
@@ -57,7 +123,7 @@ window.addEventListener('keyup', (e) => {
 
 frequencySlider.addEventListener('input', (e) => {
   const freq = parseFloat(e.target.value);
-  freqDisplay.textContent = freq;
+ 
   if (isPlaying && carrier) {
     //oscillator.frequency.value = freq;
     carrier.frequency.value = freq;
@@ -66,7 +132,7 @@ frequencySlider.addEventListener('input', (e) => {
 
 ModDepthSlider.addEventListener('input', (e) => {
   const modDepth = parseFloat(e.target.value);
-  modDepthDisplay.textContent = modDepth; 
+ 
   if (isPlaying && modGain) {
     modGain.gain.value = modDepth;
   }
@@ -75,7 +141,7 @@ ModDepthSlider.addEventListener('input', (e) => {
 
 ModFrequencySlider.addEventListener('input', (e) => {
   const modFreq = parseFloat(e.target.value);
-  modFreqDisplay.textContent = modFreq; 
+  
   if (isPlaying && modulator) {
    //mod.frequency.value = modFreq;
     modulator.frequency.value = modFreq;
@@ -83,11 +149,11 @@ ModFrequencySlider.addEventListener('input', (e) => {
 });
 
 
-waveTypeSelect.addEventListener('change', (e) => {
+/* waveTypeSelect.addEventListener('change', (e) => {
   if (isPlaying && carrier) {
     carrier.type = e.target.value;
   }
-});
+}); */
 
 
 function startFullSiren() {
@@ -101,7 +167,8 @@ function startFullSiren() {
  modGain = audioCtx.createGain();
 
 // 3. Configure Nodes
-carrier.type = waveTypeSelect.value;
+carrier.type = carrierType;
+modulator.type = modulatorType;
 carrier.frequency.value = parseFloat(frequencySlider.value); 
 modulator.frequency.value = parseFloat(ModFrequencySlider.value); 
 modGain.gain.value = parseFloat(ModDepthSlider.value);      

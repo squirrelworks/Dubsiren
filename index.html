@@ -4,46 +4,56 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DubSiren</title>
-    <link rel="shortcut icon" href="assets/img/Fav-Icon.svg" type="image/x-icon">
-   <script src="assets/js/app.js" defer></script>
+    <link rel="shortcut icon" href="assets/img/app_icons/sin.svg" type="image/x-icon">
+<script src="assets/js/app.js" defer></script>
         <link rel="stylesheet" href="assets/css/site.css">
-    <!-- <script src="assets/js/test.js" defer></script> -->
+   
 </head>
 <body>
     <header>
-        <h1>Dub Siren 1.0</h1>
+        <h1>Dub Siren</h1>
     </header>
+<main>
+    <section class="controls">
+    <h2>Tone</h2>
 
-     <label> Wave Type:  
-            <select id="waveType">     
-                <option value="sine">Sine</option>
-                <option value="square">Square</option>
-                <option value="sawtooth">Sawtooth</option>
-                <option value="triangle">Triangle</option>
-            </select>
-        </label>
-<br>
+        <section id="waveButtons">
+
+            <img class="waveButton" data-type="sine" src="assets/img/app_icons/sin.svg" alt="sine wave">
+                <img class="waveButton" data-type="square" src="assets/img/app_icons/squ.svg" alt="square wave">
+                <img class="waveButton" data-type="sawtooth" src="assets/img/app_icons/saw.svg" alt="sawtooth wave">
+                <img class="waveButton" data-type="triangle" src="assets/img/app_icons/tri.svg" alt="triangle wave">
+
+        </section>
+ <input type="range" id="frequency" min="20" max="2000" value="500" step="1" >
+       
+</section>
     
-    <br id="sliders">
-        <label>Tone: <input type="range" id="frequency" min="20" max="2000" value="500" ></label>
-        <span id="freqDisplay"></span></br>
+   <section class="controls">
+<h2>Modulation</h2>
+<section id="modButtons">
 
-         <label>Speed: <input type="range" id="modFrequency" min="0.1" max="12" value="5"></label>
-        <span id="modFreqDisplay"></span>
+            <img class="modButton" data-type="sine" src="assets/img/app_icons/sin.svg" alt="sine wave">
+                <img class="modButton" data-type="square" src="assets/img/app_icons/squ.svg" alt="square wave">
+                <img class="modButton" data-type="sawtooth" src="assets/img/app_icons/saw.svg" alt="sawtooth wave">
+                <img class="modButton" data-type="triangle" src="assets/img/app_icons/tri.svg" alt="triangle wave">
 
-        <br>
-         <label>depth: <input type="range" id="modDepth" min="1" max="500" value="199"></label>
-        <span id="modDepthDisplay"></span>
+        </section>
+
+         <label>Speed: </label><input type="range" id="modFrequency" min="0.1" max="12" value="5" step="0.5">
+         <label>Depth: </label><input type="range" id="modDepth" min="1" max="500" value="199" step="1">
+   </section>
+ 
 
 
     </section>  
-
+</main>
     
        
     
 
-    <footer>
-        <button id="playBtn">Trigger</button>
+    <footer id="playBtn">
+        <button >Trigger</button>
       
     </footer>
 </body>
