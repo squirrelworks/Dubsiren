@@ -4,7 +4,6 @@ let gainNode;
 let isPlaying = false;
 let mod;
 
-
 let carrier ;
 let modulator;
 let modGain;
