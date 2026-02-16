@@ -43,6 +43,12 @@ header{
 
 }
 
+#logo{
+  margin: 8px;
+  width: 100px;
+  height: 100px;
+}
+
 
 button {
      font-family: "Caveat Brush", cursive;
